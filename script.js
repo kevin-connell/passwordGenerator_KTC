@@ -35,8 +35,15 @@ var isUpper = false;
 var isNumber = false;
 var isSpecial = false;
 
-var randomNumber = 1
 var userPassword = ""
+
+// function to add an array to the user's custom array
+
+function addSet(x , y) {
+  if (x) {
+    passPossible = passPossible.concat(y)
+  }
+}
 
 generateBtn.addEventListener("click", writePassword);
 
@@ -69,26 +76,19 @@ function generatePassword() {
   // ask user to confirm which character sets they would like to include in their password. for every set approved, add that set to the user's custom characters array. if they deline all options, alert them and re-ask
 
   while (isLower == false && isUpper == false && isNumber == false && isSpecial == false) {
+
     isLower = confirm("Would you like to include lowercase letters?")
-    if (isLower) {
-      passPossible = passPossible.concat(lowerSet)
-      console.log(passPossible)
-    }
+    addSet(isLower , lowerSet)
+
     isUpper = confirm("Would you like to include uppercase letters?")
-    if (isUpper) {
-      passPossible = passPossible.concat(upperSet)
-      console.log(passPossible)
-    }
+    addSet(isUpper , upperSet)
+
     isNumber = confirm("Would you like to include numbers?")
-    if (isNumber) {
-      passPossible = passPossible.concat(numberSet)
-      console.log(passPossible)
-    }
+    addSet(isNumber , numberSet)
+
     isSpecial = confirm("Would you like to include special characters?")
-    if (isSpecial) {
-      passPossible = passPossible.concat(specialSet)
-      console.log(passPossible)
-    }
+    addSet(isSpecial , specialSet)
+
     if (isLower == false && isUpper == false && isNumber == false && isSpecial == false) {
       alert("You must selective at least one character type!")
     }
@@ -97,10 +97,7 @@ function generatePassword() {
   // generate a random number and use it to choose a character from the user's custom character array. continue choosing characters until the password is the user-specified length.
 
   for (var i = 0; i < passLength; i++) {
-    randomNumber = Math.floor(Math.random() * passPossible.length);
-    console.log(randomNumber);
-    userPassword = userPassword + passPossible[randomNumber];
-    console.log("Password is " + userPassword);
+    userPassword = userPassword + passPossible[Math.floor(Math.random() * passPossible.length)];
   }
 
   // return the result!
