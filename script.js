@@ -40,8 +40,12 @@ function generatePassword() {
   var isSpecial = false;
 
   var passLength = prompt("How long would you like your password to be?");
-  while (passLength < 8 || passLength > 128) {
-    alert("The password must be at least 8 characters and no more than 128 characters. " + passLength + " does not meet the critiria");
+  while (isNaN(passLength) || passLength < 8 || passLength > 128) {
+    if (isNaN(passLength)) {
+      alert(passLength + " is not a number!");
+    } else {
+      alert("The password must be at least 8 characters and no more than 128 characters. " + passLength + " does not meet the critiria");
+    } 
     var passLength = prompt("How long would you like your password to be?");
   }
   while (isLower == false && isUpper == false && isNumber == false && isSpecial == false) {
