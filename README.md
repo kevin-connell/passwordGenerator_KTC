@@ -1,1 +1,1 @@
-# passwordGenerator_KTC
+This is a password generator that randomly generates passwords based on a user criteria. The generation is done in javascript and provides the user with prompts and alerts that guides them through picking critiria for a new password. 
